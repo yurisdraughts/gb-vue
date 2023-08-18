@@ -68,7 +68,16 @@ body {
   cursor: inherit;
 
   a:hover & {
-    scale: 1.1;
+    scale: 1.03;
+  }
+
+  &__path {
+    @include transition(stroke);
+    stroke: $heading-color;
+  }
+
+  a:hover &__path {
+    stroke: $accent-color;
   }
 
   &_small {
@@ -310,6 +319,7 @@ body {
 }
 
 .blog-item {
+  display: block;
   border-radius: pxToVw(62);
   border: 1px solid #e7e7e7;
   padding: 2.1rem;
@@ -324,9 +334,55 @@ body {
   }
 
   &__img {
-    margin-bottom: 2.1rem;
     width: 100%;
     height: auto;
+  }
+
+  &__img-wrapper {
+    position: relative;
+    margin-bottom: 2.1rem;
+
+    &::after {
+      @include transition(color);
+      position: absolute;
+      left: 2rem;
+      bottom: 2rem;
+      display: block;
+      border-radius: 0.8rem 0.8rem 0.8rem 0;
+      padding: 0.4rem 1.1rem 0.8rem;
+      background: #fff;
+
+      color: $text-color;
+      font-family: Jost;
+      font-size: 1.6rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%;
+      letter-spacing: 0.016rem;
+      text-transform: capitalize;
+    }
+
+    a:hover &::after {
+      color: $accent-color;
+    }
+
+    &_kitchan {
+      &::after {
+        content: "Kitchan Design";
+      }
+    }
+
+    &_living {
+      &::after {
+        content: "Living Design";
+      }
+    }
+
+    &_interior {
+      &::after {
+        content: "Interior Design";
+      }
+    }
   }
 
   &__heading {
