@@ -20,11 +20,9 @@
       <div>
         <p>Список элементов:</p>
         <ul>
-          <li
-            v-for="(element, index) in list"
-            :key="index"
-            @click="deleteFromList(index)"
-          >{{element}}</li>
+          <li v-for="{id, text} in list" :key="id" @click="deleteFromList(id)">
+            {{text}}
+          </li>
         </ul>
         <button @click="addToList">Добавить</button>
       </div>
@@ -44,10 +42,18 @@
               .join("");
           },
           addToList() {
-            this.list.push("Новый элемент списка");
+            const newEl = {
+              id: this.list.length === 0 ? 0 : this.list.at(-1).id + 1,
+              text: "Новый элемент списка",
+            };
+            this.list.push(newEl);
           },
-          deleteFromList(index) {
-            this.list.splice(index, 1);
+          deleteFromList(id) {
+            let i;
+            for (let j = 0; j < this.list.length; j++) {
+              if (this.list[j].id === id) i = j;
+            }
+            if (i !== undefined) this.list.splice(i, 1);
           },
         },
       });
