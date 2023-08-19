@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework 2</title>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+
+      ul {
+        margin: 0 0 20px;
+        padding: 0;
+        font-size: 20px;
+      }
+
+      li {
+        display: block;
+      }
+
+      .name,
+      .price {
+        font-weight: bold;
+      }
+
+      .price {
+        color: firebrick;
+      }
+
+      button {
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <ul>
+        <li v-for="({name, price}, index) in orderedProducts" :key="index">
+          <span class="name">{{name}}</span>:
+          <span class="price">{{price}}</span>₽ за кг.
+        </li>
+      </ul>
+      <button @click="setOrder('ascending')">По возрастанию</button>
+      <button @click="setOrder('descending')">По убыванию</button>
+      <button @click="setOrder('default')">По умолчанию</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          products: [
+            { name: "Огурцы", price: 120 },
+            { name: "Томаты", price: 170 },
+            { name: "Кабачки", price: 70 },
+            { name: "Яблоки", price: 90 },
+            { name: "Черешня", price: 300 },
+            { name: "Арбуз", price: 30 },
+            { name: "Малина", price: 190 },
+          ],
+          order: "default",
+        },
+        methods: {
+          setOrder(newOrder) {
+            if (
+              newOrder === "ascending" ||
+              newOrder === "descending" ||
+              newOrder === "default"
+            ) {
+              this.order = newOrder;
+            } else {
+              throw new Error(
+                "'order' property can only be one of 3 values: " +
+                  "'ascending', 'descending' or 'default'"
+              );
+            }
+          },
+        },
+        computed: {
+          orderedProducts() {
+            if (this.order === "ascending") {
+              return [...this.products].sort((a, b) => a.price - b.price);
+            } else if (this.order === "descending") {
+              return [...this.products].sort((a, b) => b.price - a.price);
+            } else {
+              return this.products;
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
