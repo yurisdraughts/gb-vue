@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Interno - interior Design</title>
+    <title>Interno - interior Design (Blog)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Jost:ital,wght@0,400;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="../styles/blog.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script defer src="scripts/script.js"></script>
+    <script defer src="../scripts/script.js"></script>
   </head>
   <body>
     <div id="app" v-cloak>
@@ -20,7 +20,7 @@
         <div class="container header__container">
           <a href="#" class="logo link">
             <img
-              src="images/Logo.svg"
+              src="../images/Logo.svg"
               alt="Interno Logo"
               width="34"
               height="34"
@@ -30,13 +30,13 @@
           <nav>
             <ul class="nav-list header__nav-list">
               <li class="nav-list__list-item">
-                <a href="#" class="link header__nav-link">Home</a>
+                <a href="../index.html" class="link header__nav-link">Home</a>
               </li>
               <li class="nav-list__list-item">
                 <a href="#" class="link header__nav-link">Project</a>
               </li>
               <li class="nav-list__list-item">
-                <a href="pages/blog.html" class="link header__nav-link">Blog</a>
+                <a href="#" class="link header__nav-link">Blog</a>
               </li>
             </ul>
           </nav>
@@ -44,62 +44,42 @@
       </header>
       <main>
         <section class="section banner">
-          <div class="container banner__container">
-            <div class="banner__inner">
-              <h1 class="heading heading_main banner__heading">
-                Let Your Home Be Unique
-              </h1>
-              <p class="text banner__paragraph">
-                There are many variations of the passages of lorem Ipsum
-                fromavailable, majority.
-              </p>
-              <a href="#" class="button"
-                >Get Started<svg
-                  width="19"
-                  height="17"
-                  viewBox="0 0 19 17"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="button__arrow-icon"
-                >
-                  <path
-                    d="M2 8.43542L15.7232 8.29857M10.6182 1.91138L17.1412 8.43436L10.4868 15.0887"
-                    stroke="#CDA274"
-                    stroke-width="2"
-                    stroke-linecap="square"
-                    stroke-linejoin="round"
-                    class="button__arrow-icon-path"
-                  />
-                </svg>
-              </a>
+          <header class="banner__header">
+            <h1 class="heading">Articles & News</h1>
+            <div class="text">
+              <a href="../index.html" class="link text">Home</a>
+              /
+              <a href="#" class="link">Blog</a>
             </div>
-          </div>
+          </header>
         </section>
-        <section class="section project">
+        <section class="section latest">
           <div class="container">
-            <header class="section__header project__header">
-              <h2 class="heading">Follow Our Projects</h2>
-              <p class="text">
-                It is a long established fact that a reader will be distracted
-                by the of readable content of page lookings at its layouts
-                points.
-              </p>
-            </header>
-            <div class="project__items-wrapper">
-              <a href="#" class="link project-item">
-                <img
-                  src="images/Kitchan1.png"
-                  alt="Modern Kitchan"
-                  class="project-item__img"
-                  width="525"
-                  height="548"
-                />
-                <div class="project-item__container">
-                  <div class="project-item__text">
-                    <h3 class="heading heading_item">Modern Kitchan</h3>
-                    <div class="text">Decor / Artchitecture</div>
-                  </div>
-                  <div class="round-button">
+            <h2 class="section-header heading">Latest Post</h2>
+            <a href="#" class="link latest__wrapper">
+              <img
+                src="../images/Latest.png"
+                alt="Latest"
+                class="latest__img"
+                width="569"
+                height="478"
+              />
+              <div class="latest__text-wrapper">
+                <h2 class="latest__heading heading">
+                  Low Cost Latest Invented Interior Designing Ideas
+                </h2>
+                <p class="latest__text text">
+                  Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae
+                  turpis dignissim maximus.posuere in.Contrary to popular
+                  belief.
+                </p>
+                <p class="latest__text text">
+                  Lorem Ipsum is not simply random text. It has roots in a piece
+                  of classica.
+                </p>
+                <div class="latest__bottom">
+                  <p class="text">26 December,2022</p>
+                  <div class="round-button round-button_small">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="70"
@@ -120,155 +100,23 @@
                     </svg>
                   </div>
                 </div>
-              </a>
-              <a href="#" class="link project-item">
-                <img
-                  src="images/Kitchan2.png"
-                  alt="Modern Kitchan"
-                  class="project-item__img"
-                  width="525"
-                  height="548"
-                />
-                <div class="project-item__container">
-                  <div class="project-item__text">
-                    <h3 class="heading heading_item">Modern Kitchan</h3>
-                    <div class="text">Decor / Artchitecture</div>
-                  </div>
-                  <div class="round-button">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="70"
-                      height="70"
-                      viewBox="0 0 70 70"
-                      fill="none"
-                      class="round-button__image"
-                    >
-                      <circle cx="35" cy="35" r="35" fill="#F4F0EC" />
-                      <path
-                        d="M32 44L40 35L32 26"
-                        stroke="#292F36"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="round-button__path"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </a>
-              <a href="#" class="link project-item">
-                <img
-                  src="images/Kitchan3.png"
-                  alt="Modern Kitchan"
-                  class="project-item__img"
-                  width="525"
-                  height="552"
-                />
-                <div class="project-item__container">
-                  <div class="project-item__text">
-                    <h3 class="heading heading_item">Modern Kitchan</h3>
-                    <div class="text">Decor / Artchitecture</div>
-                  </div>
-                  <div class="round-button">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="70"
-                      height="70"
-                      viewBox="0 0 70 70"
-                      fill="none"
-                      class="round-button__image"
-                    >
-                      <circle cx="35" cy="35" r="35" fill="#F4F0EC" />
-                      <path
-                        d="M32 44L40 35L32 26"
-                        stroke="#292F36"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="round-button__path"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </a>
-              <a href="#" class="link project-item">
-                <img
-                  src="images/Kitchan4.png"
-                  alt="Modern Kitchan"
-                  class="project-item__img"
-                  width="525"
-                  height="550"
-                />
-                <div class="project-item__container">
-                  <div class="project-item__text">
-                    <h3 class="heading heading_item">Modern Kitchan</h3>
-                    <div class="text">Decor / Artchitecture</div>
-                  </div>
-                  <div class="round-button">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="70"
-                      height="70"
-                      viewBox="0 0 70 70"
-                      fill="none"
-                      class="round-button__image"
-                    >
-                      <circle cx="35" cy="35" r="35" fill="#F4F0EC" />
-                      <path
-                        d="M32 44L40 35L32 26"
-                        stroke="#292F36"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="round-button__path"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </section>
-        <section class="section counter">
-          <div class="container counter__container">
-            <div class="counter__counter">
-              <h2 class="heading heading_counter">12</h2>
-              <div class="text">Years Of Experiance</div>
-            </div>
-            <div class="counter__counter">
-              <h2 class="heading heading_counter">85</h2>
-              <div class="text">Success Project</div>
-            </div>
-            <div class="counter__counter">
-              <h2 class="heading heading_counter">15</h2>
-              <div class="text">Active Project</div>
-            </div>
-            <div class="counter__counter">
-              <h2 class="heading heading_counter">95</h2>
-              <div class="text">Happy CUstomers</div>
-            </div>
+              </div>
+            </a>
           </div>
         </section>
         <section class="section blog">
           <div class="container">
-            <header class="section__header blog__header">
-              <h2 class="heading">Articles & News</h2>
-              <p class="text">
-                It is a long established fact that a reader will be distracted
-                by the of readable content of a page when lookings at its
-                layouts the points of using.
-              </p>
-            </header>
+            <h2 class="section-header heading">Articles & News</h2>
             <div class="blog__items-wrapper">
               <a
                 :href="article.link"
                 class="link blog-item"
-                v-for="article in blogArticles.slice(3)"
+                v-for="article in blogArticles"
                 :key="article.id"
               >
                 <div class="blog-item__img-wrapper">
                   <img
-                    :src="article.imgSrc"
+                    :src="'../' + article.imgSrc"
                     :alt="article.category"
                     class="blog-item__img"
                     width="340"
@@ -313,6 +161,78 @@
                 </div>
               </a>
             </div>
+            <div class="blog__pagination">
+              <a
+                href="#"
+                class="blog__page-link text round-button round-button_small"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="53"
+                  height="52"
+                  viewBox="0 0 53 52"
+                  fill="none"
+                  class="round-button__image blog__page-link-img"
+                >
+                  <circle cx="26.5" cy="26" r="26" fill="#F4F0EC" />
+                </svg>
+                01
+              </a>
+              <a
+                href="#"
+                class="blog__page-link text round-button round-button_small"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="53"
+                  height="52"
+                  viewBox="0 0 53 52"
+                  fill="none"
+                  class="round-button__image blog__page-link-img"
+                >
+                  <circle cx="26.5" cy="26" r="25.5" stroke="#CDA274" />
+                </svg>
+                02
+              </a>
+              <a
+                href="#"
+                class="blog__page-link text round-button round-button_small"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="53"
+                  height="52"
+                  viewBox="0 0 53 52"
+                  fill="none"
+                  class="round-button__image blog__page-link-img"
+                >
+                  <circle cx="26.5" cy="26" r="25.5" stroke="#CDA274" />
+                </svg>
+                03
+              </a>
+              <a
+                href="#"
+                class="blog__page-link round-button round-button_small"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="53"
+                  height="52"
+                  viewBox="0 0 53 52"
+                  fill="none"
+                  class="round-button__image blog__page-link-img"
+                >
+                  <circle cx="26.5" cy="26" r="25.5" stroke="#CDA274" />
+                  <path
+                    d="M23.7714 32.9527L29.7143 26.267L23.7714 19.5813"
+                    stroke="#292F36"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
           </div>
         </section>
       </main>
@@ -321,7 +241,7 @@
           <div class="footer__main">
             <a href="#" class="footer__logo logo link">
               <img
-                src="images/Logo.svg"
+                src="../images/Logo.svg"
                 alt="Interno Logo"
                 width="34"
                 height="34"
@@ -370,13 +290,13 @@
             <nav>
               <ul class="nav-list">
                 <li class="nav-list__list-item footer__text">
-                  <a href="#" class="link text">Home</a>
+                  <a href="../index.html" class="link text">Home</a>
                 </li>
                 <li class="nav-list__list-item footer__text">
                   <a href="#" class="link text">Project</a>
                 </li>
                 <li class="nav-list__list-item footer__text">
-                  <a href="pages/blog.html" class="link text">Blog</a>
+                  <a href="#" class="link text">Blog</a>
                 </li>
               </ul>
             </nav>

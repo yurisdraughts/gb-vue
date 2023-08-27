@@ -1,0 +1,55 @@
+new Vue({
+  el: "#app",
+  data: {
+    blogArticles: [
+      {
+        id: 0,
+        category: "Kitchan Design",
+        imgSrc: "images/Kitchan-Design.png",
+        link: "#",
+        heading: "Let’s Get Solution For Building Construction Work",
+        date: new Date(2022, 11, 26),
+      },
+      {
+        id: 1,
+        category: "Living Design",
+        imgSrc: "images/Living-Design.png",
+        link: "#",
+        heading: "Low Cost Latest Invented Interior Designing Ideas.",
+        date: new Date(2022, 11, 22),
+      },
+      {
+        id: 2,
+        category: "Interior Design",
+        imgSrc: "images/Interior-Design.png",
+        link: "#",
+        heading: "Best For Any Office & Business Interior Solution",
+        date: new Date(2022, 11, 25),
+      },
+      {
+        id: 3,
+        category: "Kitchan Design",
+        imgSrc: "images/Kitchan-Design2.png",
+        link: "#",
+        heading: "Let’s Get Solution For Building Construction Work",
+        date: new Date(2022, 11, 26),
+      },
+      {
+        id: 4,
+        category: "Living Design",
+        imgSrc: "images/Living-Design2.png",
+        link: "#",
+        heading: "Low Cost Latest Invented Interior Designing Ideas.",
+        date: new Date(2022, 11, 22),
+      },
+      {
+        id: 5,
+        category: "Interior Design",
+        imgSrc: "images/Interior-Design2.png",
+        link: "#",
+        heading: "Best For Any Office & Business Interior Solution",
+        date: new Date(2022, 11, 25),
+      },
+    ],
+  },
+});

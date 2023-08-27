@@ -1,0 +1,59 @@
+@use "variables" as *;
+
+.header {
+  margin-bottom: pxToVw(57);
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__nav-list {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 4.8rem;
+  }
+
+  &__nav-link {
+    color: $heading-color;
+    font-family: "Jost";
+    font-size: 2rem;
+    line-height: 125%;
+  }
+}
+
+.footer {
+  &__container {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 5.26vw;
+
+    > * {
+      min-width: 6.25vw;
+    }
+  }
+
+  &__logo {
+    margin-bottom: 1.8rem;
+  }
+
+  &__info {
+    margin-bottom: 3.1rem;
+  }
+
+  &__socials {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 5.4rem;
+    width: fit-content;
+  }
+
+  &__heading {
+    margin-bottom: 2.6rem;
+  }
+
+  &__text {
+    margin-bottom: 3rem;
+  }
+}
