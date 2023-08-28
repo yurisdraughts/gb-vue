@@ -51,7 +51,6 @@ body {
 }
 
 .round-button {
-  transition: scale 0.3s ease-in-out;
   display: block;
   border: none;
   width: 3.6458333333vw;
@@ -59,11 +58,7 @@ body {
   color: inherit;
   background-color: transparent;
   transform-origin: center;
-  scale: 1;
   cursor: inherit;
-}
-.round-button:hover {
-  scale: 1.03;
 }
 .round-button_small {
   width: 2.7083333333vw;
@@ -119,6 +114,7 @@ body {
 }
 .link:hover {
   color: #cda274;
+  cursor: pointer;
 }
 .link:hover .link__icon-path {
   fill: #cda274;
@@ -285,7 +281,6 @@ body {
 }
 .blog__items-wrapper {
   display: grid;
-  grid-auto-flow: column;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.40625vw;
 }

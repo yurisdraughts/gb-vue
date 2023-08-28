@@ -65,6 +65,60 @@
   }
 }
 
+.current {
+  &__container {
+    display: grid;
+    grid-auto-flow: column;
+    gap: pxToVw(52);
+  }
+
+  &__heading {
+    margin-bottom: 2.1rem;
+  }
+
+  &__img {
+    width: pxToVw(799);
+    height: auto;
+  }
+
+  &__date {
+    margin-block: 4.6rem 4.8rem;
+    font-size: 1.6rem;
+    letter-spacing: 0.016rem;
+    text-transform: capitalize;
+  }
+
+  &__tags {
+    min-width: pxToVw(345);
+  }
+
+  &__tags-heading {
+    margin-bottom: 2.4rem;
+    font-size: 2.5rem;
+    letter-spacing: 0.05rem;
+  }
+
+  &__tags-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__tag {
+    @include transition(background-color);
+    border-radius: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1.1rem;
+    padding: .9rem 3rem;
+    background-color: #f4f0ec;
+    font-size: 1.8rem;
+
+    &:hover {
+      background-color: #292f36;
+      color: #fff;
+    }
+  }
+}
+
 .blog {
   margin-bottom: pxToVw(200);
 

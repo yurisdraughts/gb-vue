@@ -60,7 +60,6 @@ body {
 }
 
 .round-button {
-  @include transition(scale);
   display: block;
   border: none;
   width: pxToVw(70);
@@ -68,12 +67,7 @@ body {
   color: inherit;
   background-color: transparent;
   transform-origin: center;
-  scale: 1;
   cursor: inherit;
-
-  &:hover {
-    scale: 1.03;
-  }
 
   &_small {
     width: pxToVw(52);
@@ -139,6 +133,7 @@ body {
 
   &:hover {
     color: $accent-color;
+    cursor: pointer;
   }
 
   &:hover &__icon-path {
