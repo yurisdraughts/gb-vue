@@ -1,0 +1,146 @@
+@use "variables" as *;
+@use "sass:math";
+
+.button {
+  @include transition(background-color);
+  display: inline-block;
+  border: none;
+  padding: 2.6rem 4.9rem;
+  border-radius: 1.8rem;
+  background-color: $heading-color;
+  box-shadow: 0rem 1rem 2rem 0rem rgba(192, 192, 192, 0.35);
+
+  color: #fff;
+  font-family: "Jost";
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 125%;
+  letter-spacing: 0.036rem;
+  text-decoration: none;
+
+  &__arrow-icon {
+    margin-left: 1rem;
+  }
+
+  &__arrow-icon-path {
+    @include transition(stroke);
+    stroke: $accent-color;
+  }
+
+  &:hover {
+    background-color: $accent-color;
+  }
+
+  &:hover &__arrow-icon-path {
+    stroke: $heading-color;
+  }
+}
+
+.container {
+  $x: math.div(1200 - 288, 1920 - 320);
+  $y: 320 * $x - 288;
+  margin: 0 auto;
+  width: calc(100vw * $x - 1px * $y);
+}
+
+.heading {
+  color: $heading-color;
+  font-family: "DM Serif Display";
+  font-size: 5rem;
+  font-weight: inherit;
+  line-height: 125%;
+  letter-spacing: 0.01rem;
+
+  &_logo,
+  &_main {
+    letter-spacing: normal;
+  }
+
+  &_logo {
+    font-size: 4rem;
+  }
+
+  &_main {
+    font-size: 6.5rem;
+  }
+
+  &_item {
+    font-size: 2.5rem;
+    letter-spacing: 0.005rem;
+  }
+
+  &_counter {
+    color: $accent-color;
+    font-size: 8.5rem;
+    letter-spacing: 0.17rem;
+  }
+
+  &_footer {
+    font-size: 2.5rem;
+    letter-spacing: normal;
+  }
+}
+
+.link {
+  @include transition(color);
+  color: inherit;
+  text-decoration: none;
+
+  &__svg {
+    @include transition(fill);
+  }
+
+  &:hover {
+    color: $accent-color;
+    cursor: pointer;
+  }
+
+  &:hover &__svg {
+    fill: $accent-color;
+  }
+}
+
+.nav-list {
+  &__list-item {
+    display: block;
+  }
+}
+
+.section {
+  margin-bottom: pxToVw(96);
+
+  &__header {
+    display: grid;
+    gap: 0.8rem;
+    margin: 0 auto;
+    width: 61.4%;
+    text-align: center;
+  }
+
+  &__blog-page-heading {
+    margin: {
+      left: 0;
+      bottom: pxToVw(30);
+    }
+  }
+}
+
+.text {
+  color: $text-color;
+  font-family: "Jost";
+  font-size: 2.2rem;
+  line-height: 150%;
+  letter-spacing: 0.022rem;
+
+  &_blog {
+    font-size: 1.6rem;
+    letter-spacing: 0.016rem;
+    text-transform: capitalize;
+  }
+}
+
+@media (max-width: $breakpoint-xs) {
+  .button {
+    padding-inline: 2.8rem;
+  }
+}

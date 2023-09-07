@@ -1,0 +1,23 @@
+@use "sass:math";
+
+$heading-color: #292f36;
+$text-color: #4d5053;
+$accent-color: #cda274;
+$light-bg-colot: #f4f0ec;
+
+$breakpoint-lg: 1440px;
+$breakpoint-md: 1024px;
+$breakpoint-sm: 768px;
+$breakpoint-xs: 425px;
+
+@mixin transition($property) {
+  transition: {
+    property: $property;
+    duration: 0.3s;
+    timing-function: ease-in-out;
+  }
+}
+
+@function pxToVw($number) {
+  @return math.div($number, 1920) * 100vw;
+}

@@ -12,8 +12,8 @@
       <BlogsList
         :goto="goto"
         :articles="articles"
-        :start="articles.length - 3"
-        length="3"
+        :start="articles.length - numberOfArticles"
+        :length="numberOfArticles"
       />
     </div>
   </section>
@@ -28,12 +28,31 @@ export default {
   components: {
     BlogsList,
   },
+  data() {
+    return {
+      isScreenSmall: matchMedia("(max-width: 1440px)").matches,
+    };
+  },
+  computed: {
+    numberOfArticles() {
+      return this.isScreenSmall ? 2 : 3;
+    }
+  },
+  methods: {
+    onresize() {
+      this.isScreenSmall = matchMedia("(max-width: 1440px)").matches;
+    },
+  },
+  created() {
+    window.addEventListener("resize", this.onresize);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.onresize);
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/variables";
-
 .blog {
   &__header {
     margin-bottom: pxToVw(52);
@@ -44,7 +63,11 @@ export default {
     grid-template-columns: repeat(3, 1fr);
     gap: pxToVw(27);
   }
+
+  @media (max-width: $breakpoint-lg) {
+    &__items-wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 }
-
-
 </style>

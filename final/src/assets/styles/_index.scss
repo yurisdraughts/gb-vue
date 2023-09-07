@@ -1,0 +1,21 @@
+@use "variables" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+body {
+  margin-block: pxToVw(53) pxToVw(134);
+  background: {
+    image: url(@/assets/images/Background.png);
+    size: cover;
+  }
+}

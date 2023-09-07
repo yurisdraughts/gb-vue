@@ -1,15 +1,7 @@
 <template>
   <header class="header">
     <div class="container header__container">
-      <a class="logo link" @click.prevent="goto({ page: 'index' })">
-        <img
-          src="../assets/Logo.svg"
-          alt="Interno Logo"
-          width="34"
-          height="34"
-        />
-        <div class="heading heading_logo">Interno</div>
-      </a>
+      <Logo class="header__logo" :goto="goto" />
       <nav>
         <ul class="nav-list header__nav-list">
           <li class="nav-list__list-item">
@@ -40,15 +32,18 @@
 </template>
 
 <script>
+import Logo from "./Logo.vue";
+
 export default {
   name: "PageHeader",
   props: ["goto"],
+  components: {
+    Logo,
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/variables";
-
 .header {
   margin-bottom: pxToVw(57);
 
@@ -69,6 +64,20 @@ export default {
     font-family: "Jost";
     font-size: 2rem;
     line-height: 125%;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    &__container {
+      flex-direction: column;
+    }
+
+    &__logo {
+      margin-bottom: 1.8rem;
+    }
+
+    &__nav-list {
+      margin-bottom: 3.1rem;
+    }
   }
 }
 </style>

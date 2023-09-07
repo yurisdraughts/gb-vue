@@ -6,21 +6,55 @@
           {{ currentArticle.heading }}
         </h2>
         <img
-          :src="require('@/assets/' + currentArticle.imgSrc)"
+          :src="require('@/assets/images/' + currentArticle.imgSrc)"
           :alt="currentArticle.heading"
           width="799"
           height="539"
           class="current__img"
         />
-        <p class="current__date text">
-          {{ currentArticle.date.getDate() }}
-          {{
-            currentArticle.date.toLocaleString("en-US", {
-              month: "long",
-            })
-          }},{{ currentArticle.date.getFullYear() }}
-        </p>
-        <div v-html="currentArticle.fullHtml" />
+        <div class="current__info text">
+          <div class="">
+            {{ currentArticle.date.getDate() }}
+            {{
+              currentArticle.date.toLocaleString("en-US", {
+                month: "long",
+              })
+            }},{{ currentArticle.date.getFullYear() }}
+          </div>
+          <div>
+            <a href="#" class="link" @click.prevent="goto({ page: 'index' })"
+              >Home</a
+            >
+            /
+            <a href="#" class="link" @click.prevent="goto({ page: 'blog' })"
+              >Blog</a
+            >
+          </div>
+        </div>
+        <template v-for="(el, i) in currentArticle.content">
+          <h3 v-if="el.heading" :key="i" class="heading">{{ el.heading }}</h3>
+          <p v-else-if="el.paragraph" :key="i" class="text current__text">
+            {{ el.paragraph }}
+          </p>
+          <blockquote
+            v-else-if="el.quote"
+            :key="i"
+            class="text current__text current__quote"
+          >
+            {{ el.quote }}
+          </blockquote>
+          <template v-else-if="el.list">
+            <ol :key="i" class="current__text">
+              <li
+                v-for="(item, j) in el.list"
+                :key="j"
+                class="text current__list-item"
+              >
+                {{ item }}
+              </li>
+            </ol>
+          </template>
+        </template>
       </div>
       <div class="text current__tags">
         <div class="heading current__tags-heading">Tags</div>
@@ -61,8 +95,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/variables";
-
 .current {
   &__container {
     display: grid;
@@ -75,20 +107,73 @@ export default {
   }
 
   &__img {
-    width: pxToVw(799);
+    width: 100%;
     height: auto;
-    border-radius: pxToVw(50);
+    border-radius: 5rem;
   }
 
-  &__date {
+  &__info {
+    display: flex;
+    justify-content: space-between;
     margin-block: 4.6rem 4.8rem;
     font-size: 1.6rem;
     letter-spacing: 0.016rem;
     text-transform: capitalize;
   }
 
-  &__tags {
-    min-width: pxToVw(345);
+  &__text:not(:last-child) {
+    margin-bottom: 3.5rem;
+  }
+
+  &__list-item {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1.4rem;
+    list-style: none;
+    counter-increment: custom; // increment counter value on every <li>
+
+    &:first-child {
+      counter-reset: custom; // start counter on first <li>
+    }
+
+    &::before {
+      display: block;
+      top: 0;
+      left: -1.4rem;
+      content: counter(custom); // display current counter value
+      color: #cda274;
+      font-family: DM Serif Display;
+      font-size: 20px;
+      line-height: 125%;
+      letter-spacing: 0.4px;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 3.2rem;
+    }
+  }
+
+  &__quote {
+    border-radius: 50px;
+    padding: 5.3rem pxToVw(227);
+    background: $light-bg-colot;
+    font-family: DM Serif Display;
+    font-style: italic;
+    line-height: 125%;
+    text-align: center;
+    letter-spacing: 0.05rem;
+    color: $accent-color;
+
+    &::before {
+      display: block;
+      position: static;
+      content: "”";
+      height: 9rem;
+      font-size: 13.3rem;
+      font-style: italic;
+      line-height: 125%;
+      letter-spacing: 0.4rem;
+    }
   }
 
   &__tags-heading {
@@ -108,12 +193,18 @@ export default {
     margin-right: 1rem;
     margin-bottom: 1.1rem;
     padding: 0.9rem 3rem;
-    background-color: #f4f0ec;
+    background-color: $light-bg-colot;
     font-size: 1.8rem;
 
     &:hover {
-      background-color: #292f36;
+      background-color: $heading-color;
       color: #fff;
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    &__container {
+      grid-auto-flow: row;
     }
   }
 }

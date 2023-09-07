@@ -1,5 +1,5 @@
 <template>
-  <div class="blog__items-wrapper">
+  <div class="blogs-list">
     <BlogItem
       v-for="article in articles.slice(start, start + length)"
       :key="article.id"
@@ -22,4 +22,18 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.blogs-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: pxToVw(28);
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

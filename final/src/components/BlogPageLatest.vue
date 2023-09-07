@@ -1,13 +1,15 @@
 <template>
   <section class="section latest">
     <div class="container">
-      <h2 class="section-header heading">Latest Post</h2>
-      <div
+      <h2 class="section__blog-page-heading heading">Latest Post</h2>
+      <a
         class="link latest__wrapper"
         @click="goto({ article: lastArticleIndex })"
+        @mouseenter="isHovering = true"
+        @mouseleave="isHovering = false"
       >
         <img
-          :src="require('@/assets/' + lastArticle.imgSrc)"
+          :src="require('@/assets/images/' + lastArticle.imgSrc)"
           alt="Latest"
           class="latest__img"
           width="569"
@@ -17,7 +19,9 @@
           <h2 class="latest__heading heading">
             {{ lastArticle.heading }}
           </h2>
-          <div v-html="lastArticle.fullHtml" />
+          <p class="text latest__text">
+            {{ firstParagraph }}
+          </p>
           <div class="latest__bottom">
             <p class="text">
               {{ lastArticle.date.getDate() }}
@@ -25,53 +29,52 @@
                 lastArticle.date.toLocaleString("en-US", { month: "long" })
               }},{{ lastArticle.date.getFullYear() }}
             </p>
-            <div class="round-button round-button_small">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="70"
-                height="70"
-                viewBox="0 0 70 70"
-                fill="none"
-                class="round-button__image"
-              >
-                <circle cx="35" cy="35" r="35" fill="#F4F0EC" />
-                <path
-                  d="M32 44L40 35L32 26"
-                  stroke="#292F36"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="round-button__path"
-                />
-              </svg>
-            </div>
+            <RoundButton variant="small" :hovered="isHovering" />
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 </template>
 
 <script>
+import RoundButton from "./RoundButton.vue";
 export default {
   name: "BlogPageLatest",
   props: ["goto", "articles"],
+  components: {
+    RoundButton,
+  },
   data() {
     return {
       lastArticle: this.articles.at(-1),
       lastArticleIndex: this.articles.length - 1,
+      isHovering: false,
     };
+  },
+  computed: {
+    firstParagraph() {
+      let paragraph = "";
+
+      for (const el of this.lastArticle.content) {
+        if (el.paragraph) {
+          paragraph = el.paragraph;
+          break;
+        }
+      }
+
+      return paragraph;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/variables";
-
 .latest {
   margin-bottom: pxToVw(150);
 
   &__wrapper {
+    @include transition(background-color);
     display: grid;
     grid-auto-flow: column;
     align-items: center;
@@ -80,12 +83,16 @@ export default {
     border-radius: 62px;
     border: 1px solid #e7e7e7;
     box-shadow: 0px 10px 30px 0px rgba(255, 255, 255, 0.25);
+
+    &:hover {
+      background-color: #f4f0ec;
+    }
   }
 
   &__img {
     width: pxToVw(569);
     height: auto;
-    border-radius: pxToVw(50);
+    border-radius: 5rem;
   }
 
   &__text-wrapper {
@@ -107,6 +114,17 @@ export default {
     grid-auto-flow: column;
     align-items: center;
     justify-content: space-between;
+  }
+
+  @media (max-width: $breakpoint-lg) {
+    &__wrapper {
+      grid-auto-flow: row;
+      justify-items: center;
+    }
+
+    &__img {
+      width: 100%;
+    }
   }
 }
 </style>

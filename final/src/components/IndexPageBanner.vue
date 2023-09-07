@@ -40,14 +40,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/variables";
+@use "sass:math";
 
 .banner {
   &__container {
     border-radius: 7rem;
     background: {
       color: lightgray;
-      image: url(../assets/Banner.png);
+      image: url(../assets/images/Banner.png);
       repeat: no-repeat;
       size: cover;
       position: 50%;
@@ -57,8 +57,12 @@ export default {
   &__inner {
     box-sizing: content-box;
     padding-block: pxToVw(208);
-    padding-left: pxToVw(52);
-    max-width: 434px;
+    padding-inline: 5.2rem;
+  }
+
+  &__heading,
+  &__paragraph {
+    width: math.div(434, 1200) * 100%;
   }
 
   &__headding {
@@ -67,6 +71,13 @@ export default {
 
   &__paragraph {
     margin-bottom: 2.1rem;
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    &__heading,
+    &__paragraph {
+      width: 100%;
+    }
   }
 }
 </style>

@@ -28,16 +28,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/variables";
 .counter {
   padding-block: pxToVw(151);
-  background-color: #f4f0ec;
+  background-color: $light-bg-colot;
 
   &__container {
     display: grid;
-    grid-auto-flow: column;
+    grid-template-columns: repeat(4, 1fr);
     justify-content: space-between;
-    padding-inline: 3vw;
+    padding-inline: pxToVw(1200 - 1082);
   }
 
   &__counter {
@@ -47,12 +46,12 @@ export default {
     justify-items: center;
 
     &:not(:first-child) {
-      margin-left: 4vw;
+      margin-left: pxToVw(76);
 
       &::before {
         position: absolute;
         top: 1.1rem;
-        left: -4vw;
+        left: pxToVw(-76);
         display: block;
         content: "";
         width: 1px;
@@ -62,7 +61,72 @@ export default {
     }
 
     &:not(:last-child) {
-      margin-right: min(pxToVw(54));
+      margin-right: pxToVw(54);
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    &__container {
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
+    }
+
+    &__counter {
+      margin-inline: pxToVw(76) !important;
+
+      &:nth-child(3)::before {
+        display: none;
+      }
+
+      &:nth-child(3),
+      &:nth-child(4) {
+        margin-top: pxToVw(76);
+
+        &::after {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          display: block;
+          content: "";
+          width: 13rem;
+          height: 1px;
+          background: $accent-color;
+        }
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    &__container {
+      grid-template-columns: 1fr;
+    }
+
+    &__counter {
+      margin-inline: pxToVw(54) !important;
+
+      &:nth-child(2),
+      &:nth-child(4) {
+        &::before {
+          display: none;
+        }
+      }
+
+      &:not(:first-child) {
+        margin-top: pxToVw(76);
+
+        &::after {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          display: block;
+          content: "";
+          width: 13rem;
+          height: 1px;
+          background: $accent-color;
+        }
+      }
     }
   }
 }

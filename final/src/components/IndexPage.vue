@@ -1,5 +1,5 @@
 <template>
-  <div id="index">
+  <div>
     <IndexPageBanner />
     <IndexPageProjects :goto="goto" />
     <IndexPageCounter />
@@ -24,5 +24,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped></style>

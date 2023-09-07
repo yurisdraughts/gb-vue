@@ -5,6 +5,13 @@ module.exports = defineConfig({
     index: {
       entry: "src/main.js",
       title: "Interior Design",
-    }
+    },
+  },
+  css: {
+    loaderOptions: {
+      scss: {
+        additionalData: `@use "@/assets/styles/variables" as *;`,
+      },
+    },
   },
 });
