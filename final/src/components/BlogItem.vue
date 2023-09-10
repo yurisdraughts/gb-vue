@@ -1,10 +1,9 @@
 <template>
-  <a
-    href="#"
+  <router-link
+    :to="{ name: 'article', params: { articleId: dest } }"
     class="link"
-    @click.prevent="goto({ article: dest })"
-    @mouseenter="isHovering = true"
-    @mouseleave="isHovering = false"
+    @mouseenter.native="isHovered = true"
+    @mouseleave.native="isHovered = false"
   >
     <article class="blog-item">
       <div class="blog-item__img-wrapper">
@@ -27,10 +26,10 @@
             article.date.getFullYear()
           }}
         </p>
-        <RoundButton variant="small" :hovered="isHovering" />
+        <RoundButton variant="small" :is-hovered="isHovered" />
       </div>
     </article>
-  </a>
+  </router-link>
 </template>
 
 <script>
@@ -38,13 +37,13 @@ import RoundButton from "./RoundButton.vue";
 
 export default {
   name: "BlogItem",
-  props: ["goto", "dest", "article"],
+  props: ["dest", "article"],
   components: {
     RoundButton,
   },
   data() {
     return {
-      isHovering: false,
+      isHovered: false,
     };
   },
 };
@@ -80,7 +79,7 @@ export default {
     bottom: 2rem;
     border-radius: 0.8rem 0.8rem 0.8rem 0;
     padding: 0.4rem 1.1rem 0.8rem;
-    background: #fff;
+    background: $neutral-background-color;
 
     color: $text-color;
     font-family: Jost;

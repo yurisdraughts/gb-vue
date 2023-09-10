@@ -1,29 +1,26 @@
 <template>
   <header class="header">
     <div class="container header__container">
-      <Logo class="header__logo" :goto="goto" />
+      <Logo class="header__logo" />
       <nav>
         <ul class="nav-list header__nav-list">
           <li class="nav-list__list-item">
-            <a
-              class="link header__nav-link"
-              @click.prevent="goto({ page: 'index' })"
-              >Home</a
-            >
+            <router-link :to="{ name: 'index' }" class="link header__nav-link">
+              Home
+            </router-link>
           </li>
           <li class="nav-list__list-item">
-            <a
+            <router-link
+              :to="{ name: 'projects' }"
               class="link header__nav-link"
-              @click.prevent="goto({ page: 'project' })"
-              >Project</a
             >
+              Project
+            </router-link>
           </li>
           <li class="nav-list__list-item">
-            <a
-              class="link header__nav-link"
-              @click.prevent="goto({ page: 'blog' })"
-              >Blog</a
-            >
+            <router-link :to="{ name: 'blog' }" class="link header__nav-link">
+              Blog
+            </router-link>
           </li>
         </ul>
       </nav>
@@ -36,7 +33,6 @@ import Logo from "./Logo.vue";
 
 export default {
   name: "PageHeader",
-  props: ["goto"],
   components: {
     Logo,
   },

@@ -1,10 +1,10 @@
 <template>
   <div id="layout">
-    <Header :goto="goto" />
+    <Header />
     <main>
       <slot></slot>
     </main>
-    <Footer :goto="goto" />
+    <Footer />
   </div>
 </template>
 
@@ -14,7 +14,6 @@ import Footer from "./Footer.vue";
 
 export default {
   name: "PageLayout",
-  props: ["goto"],
   components: {
     Header,
     Footer,

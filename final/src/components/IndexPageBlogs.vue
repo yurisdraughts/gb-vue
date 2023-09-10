@@ -10,10 +10,9 @@
         </p>
       </header>
       <BlogsList
-        :goto="goto"
         :articles="articles"
-        :start="articles.length - numberOfArticles"
-        :length="numberOfArticles"
+        :number-of-articles-shown="numberOfArticles"
+        :starting-index="articles.length - numberOfArticles"
       />
     </div>
   </section>
@@ -24,31 +23,19 @@ import BlogsList from "./BlogsList.vue";
 
 export default {
   name: "IndexPageBlogs",
-  props: ["goto", "articles"],
   components: {
     BlogsList,
   },
   data() {
     return {
-      isScreenSmall: matchMedia("(max-width: 1440px)").matches,
+      numberOfArticles: 3,
     };
   },
   computed: {
-    numberOfArticles() {
-      return this.isScreenSmall ? 2 : 3;
-    }
-  },
-  methods: {
-    onresize() {
-      this.isScreenSmall = matchMedia("(max-width: 1440px)").matches;
+    articles() {
+      return this.$store.getters.getArticles;
     },
   },
-  created() {
-    window.addEventListener("resize", this.onresize);
-  },
-  destroyed() {
-    window.removeEventListener("resize", this.onresize);
-  }
 };
 </script>
 
@@ -62,12 +49,6 @@ export default {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: pxToVw(27);
-  }
-
-  @media (max-width: $breakpoint-lg) {
-    &__items-wrapper {
-      grid-template-columns: repeat(2, 1fr);
-    }
   }
 }
 </style>

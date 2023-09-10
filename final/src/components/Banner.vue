@@ -1,40 +1,37 @@
 <template>
   <section class="section banner" :class="'banner_' + variant">
     <header
+      v-if="projectId === undefined && articleId === undefined"
       class="banner__header"
-      v-if="currentProjectId == null && currentArticleId == null"
     >
       <h1 class="heading">{{ heading }}</h1>
       <div class="text">
-        <a href="#" class="link text" @click.prevent="goto({ page: 'index' })">
+        <router-link :to="{ name: 'index' }" class="link text">
           Home
-        </a>
+        </router-link>
         /
-        <a
+        <router-link
+          :to="{ name: 'blog' }"
           v-if="variant === 'blog'"
-          href="#"
           class="link text"
-          @click.prevent="goto({ page: 'blog' })"
         >
           Blog
-        </a>
-        <a
+        </router-link>
+        <router-link
+          :to="{ name: 'project' }"
           v-else-if="variant === 'project'"
-          href="#"
           class="link text"
-          @click.prevent="goto({ page: 'project' })"
         >
           Project
-        </a>
-        {{ currentTag ? "/" : "" }}
-        <a
-          v-if="variant === 'blog'"
-          href="#"
+        </router-link>
+        {{ tagId ? "/" : "" }}
+        <router-link
+          v-if="variant === 'blog' && tagId !== undefined"
+          :to="{ name: 'tag', params: { tagId } }"
           class="link text"
-          @click.prevent="goto({ tag: currentTag })"
         >
-          {{ currentTag }}
-        </a>
+          {{ tagId }}
+        </router-link>
       </div>
     </header>
   </section>
@@ -43,13 +40,7 @@
 <script>
 export default {
   name: "PageBanner",
-  props: [
-    "goto",
-    "variant",
-    "currentTag",
-    "currentArticleId",
-    "currentProjectId",
-  ],
+  props: ["variant", "tagId", "articleId", "projectId"],
   computed: {
     heading() {
       if (this.variant === "blog") return "Articles & News";
@@ -84,7 +75,7 @@ export default {
     border-radius: 37px 37px 0px 0px;
     padding: 4.1rem 7.8rem;
     max-width: 90%;
-    background: #fff;
+    background: $neutral-background-color;
     text-align: center;
   }
 }

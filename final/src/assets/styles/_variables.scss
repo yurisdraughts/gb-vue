@@ -3,7 +3,8 @@
 $heading-color: #292f36;
 $text-color: #4d5053;
 $accent-color: #cda274;
-$light-bg-colot: #f4f0ec;
+$light-background-color: #f4f0ec;
+$neutral-background-color: #fff;
 
 $breakpoint-lg: 1440px;
 $breakpoint-md: 1024px;
@@ -20,4 +21,10 @@ $breakpoint-xs: 425px;
 
 @function pxToVw($number) {
   @return math.div($number, 1920) * 100vw;
+}
+
+@function width($initNumInPx) {
+  $x: math.div($initNumInPx - 288, 1920 - 320);
+  $y: 320 * $x - 288;
+  @return calc(100vw * $x - 1px * $y);
 }

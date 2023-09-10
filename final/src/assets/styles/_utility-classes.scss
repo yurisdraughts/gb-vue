@@ -37,10 +37,8 @@
 }
 
 .container {
-  $x: math.div(1200 - 288, 1920 - 320);
-  $y: 320 * $x - 288;
   margin: 0 auto;
-  width: calc(100vw * $x - 1px * $y);
+  width: width(1200);
 }
 
 .heading {
@@ -108,6 +106,10 @@
 
 .section {
   margin-bottom: pxToVw(96);
+
+  &_projects {
+    margin-bottom: pxToVw(200);
+  }
 
   &__header {
     display: grid;

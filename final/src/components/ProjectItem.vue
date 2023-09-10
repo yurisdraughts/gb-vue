@@ -1,10 +1,10 @@
 <template>
-  <a
-    href="#"
+  <router-link
+    :to="{ name: 'project', params: { projectId: project.id } }"
     class="link project-item"
-    @click.prevent="goto({ page: 'project' })"
-    @mouseenter="isHovering = true"
-    @mouseleave="isHovering = false"
+    :class="isIndexPage ? 'project-item_index' : ''"
+    @mouseenter.native="isHovered = true"
+    @mouseleave.native="isHovered = false"
   >
     <article>
       <img
@@ -19,35 +19,35 @@
           <h3 class="heading heading_item">{{ project.heading }}</h3>
           <div class="text">
             <template v-for="(tag, index) in project.tags">
-              <a
-                href="#"
+              <router-link
+                :to="{ name: 'tag', params: { tagId: tag } }"
                 class="link"
                 :key="index"
-                @click.prevent="goto({ tag })"
-                >{{ tag }}</a
               >
+                {{ tag }}
+              </router-link>
               {{ index + 1 !== project.tags.length ? " / " : "" }}
             </template>
           </div>
         </div>
-        <RoundButton variant="large" :hovered="isHovering" />
+        <RoundButton variant="large" :is-hovered="isHovered" />
       </div>
     </article>
-  </a>
+  </router-link>
 </template>
 
 <script>
 import RoundButton from "./RoundButton.vue";
 
 export default {
-  name: "IndexPageProjectItem",
-  props: ["goto", "project"],
+  name: "ProjectItem",
+  props: ["project", "isIndexPage"],
   components: {
     RoundButton,
   },
   data() {
     return {
-      isHovering: false,
+      isHovered: false,
     };
   },
 };
@@ -61,21 +61,21 @@ export default {
     height: auto;
   }
 
-  // &:nth-child(1) &__img {
-  //   border-top-right-radius: 8rem;
-  // }
+  &_index:nth-child(1) &__img {
+    border-top-right-radius: 8rem;
+  }
 
-  // &:nth-child(2) &__img {
-  //   border-top-left-radius: 8rem;
-  // }
+  &_index:nth-child(2) &__img {
+    border-top-left-radius: 8rem;
+  }
 
-  // &:nth-child(3) &__img {
-  //   border-bottom-right-radius: 8rem;
-  // }
+  &_index:nth-child(3) &__img {
+    border-bottom-right-radius: 8rem;
+  }
 
-  // &:nth-child(4) &__img {
-  //   border-bottom-left-radius: 8rem;
-  // }
+  &_index:nth-child(4) &__img {
+    border-bottom-left-radius: 8rem;
+  }
 
   &__container {
     display: flex;

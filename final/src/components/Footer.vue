@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="container footer__container">
       <div class="footer__main footer__section">
-        <Logo :goto="goto" class="footer__logo" />
+        <Logo class="footer__logo" />
         <p class="text footer__info">
           It is a long established fact that a reader will be distracted
           lookings.
@@ -45,19 +45,19 @@
         <nav>
           <ul class="nav-list footer__nav-list">
             <li class="nav-list__list-item footer__text footer__nav-list-item">
-              <a class="link text" @click.prevent="goto({ page: 'index' })"
-                >Home</a
-              >
+              <router-link :to="{ name: 'index' }" class="link text">
+                Home
+              </router-link>
             </li>
             <li class="nav-list__list-item footer__text footer__nav-list-item">
-              <a class="link text" @click.prevent="goto({ page: 'project' })"
-                >Project</a
-              >
+              <router-link :to="{ name: 'projects' }" class="link text">
+                Project
+              </router-link>
             </li>
             <li class="nav-list__list-item footer__text footer__nav-list-item">
-              <a class="link text" @click.prevent="goto({ page: 'blog' })"
-                >Blog</a
-              >
+              <router-link :to="{ name: 'blog' }" class="link text">
+                Blog
+              </router-link>
             </li>
           </ul>
         </nav>
@@ -80,7 +80,6 @@ import Logo from "./Logo.vue";
 
 export default {
   name: "PageFooter",
-  props: ["goto"],
   components: {
     Logo,
   },

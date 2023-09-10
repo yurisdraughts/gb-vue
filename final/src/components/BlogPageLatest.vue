@@ -2,11 +2,11 @@
   <section class="section latest">
     <div class="container">
       <h2 class="section__blog-page-heading heading">Latest Post</h2>
-      <a
+      <router-link
+        :to="{ name: 'article', params: { articleId: lastArticleIndex } }"
         class="link latest__wrapper"
-        @click="goto({ article: lastArticleIndex })"
-        @mouseenter="isHovering = true"
-        @mouseleave="isHovering = false"
+        @mouseenter.native="isHovered = true"
+        @mouseleave.native="isHovered = false"
       >
         <img
           :src="require('@/assets/images/' + lastArticle.imgSrc)"
@@ -29,30 +29,34 @@
                 lastArticle.date.toLocaleString("en-US", { month: "long" })
               }},{{ lastArticle.date.getFullYear() }}
             </p>
-            <RoundButton variant="small" :hovered="isHovering" />
+            <RoundButton variant="small" :is-hovered="isHovered" />
           </div>
         </div>
-      </a>
+      </router-link>
     </div>
   </section>
 </template>
 
 <script>
 import RoundButton from "./RoundButton.vue";
+
 export default {
   name: "BlogPageLatest",
-  props: ["goto", "articles"],
   components: {
     RoundButton,
   },
   data() {
     return {
-      lastArticle: this.articles.at(-1),
-      lastArticleIndex: this.articles.length - 1,
-      isHovering: false,
+      isHovered: false,
     };
   },
   computed: {
+    lastArticle() {
+      return this.$store.getters.getArticles.at(-1);
+    },
+    lastArticleIndex() {
+      return this.$store.getters.getArticles.length - 1;
+    },
     firstParagraph() {
       let paragraph = "";
 

@@ -22,13 +22,9 @@
             }},{{ currentArticle.date.getFullYear() }}
           </div>
           <div>
-            <a href="#" class="link" @click.prevent="goto({ page: 'index' })"
-              >Home</a
-            >
+            <router-link :to="{ name: 'index' }" class="link">Home</router-link>
             /
-            <a href="#" class="link" @click.prevent="goto({ page: 'blog' })"
-              >Blog</a
-            >
+            <router-link :to="{ name: 'blog' }" class="link">Blog</router-link>
           </div>
         </div>
         <template v-for="(el, i) in currentArticle.content">
@@ -59,15 +55,14 @@
       <div class="text current__tags">
         <div class="heading current__tags-heading">Tags</div>
         <div class="current__tags-wrapper">
-          <a
-            href="#"
+          <router-link
+            :to="{ name: 'tag', params: { tagId: tag } }"
             class="current__tag link text"
-            v-for="(currentTag, index) in currentArticle.tags"
+            v-for="(tag, index) in currentArticle.tags"
             :key="index"
-            @click.prevent="goto({ tag: currentTag })"
           >
-            {{ currentTag }}
-          </a>
+            {{ tag }}
+          </router-link>
         </div>
       </div>
     </div>
@@ -77,18 +72,10 @@
 <script>
 export default {
   name: "BlogPageCurrent",
-  props: ["goto", "articles", "currentArticleId", "currentTag"],
+  props: ["articleId"],
   computed: {
     currentArticle() {
-      let currentArticle;
-
-      for (const article of this.articles) {
-        if (article.id === this.currentArticleId) {
-          currentArticle = article;
-        }
-      }
-
-      return currentArticle;
+      return this.$store.getters.getArticleById(this.articleId);
     },
   },
 };
@@ -156,7 +143,7 @@ export default {
   &__quote {
     border-radius: 50px;
     padding: 5.3rem pxToVw(227);
-    background: $light-bg-colot;
+    background: $light-background-color;
     font-family: DM Serif Display;
     font-style: italic;
     line-height: 125%;
@@ -193,12 +180,12 @@ export default {
     margin-right: 1rem;
     margin-bottom: 1.1rem;
     padding: 0.9rem 3rem;
-    background-color: $light-bg-colot;
+    background-color: $light-background-color;
     font-size: 1.8rem;
 
     &:hover {
       background-color: $heading-color;
-      color: #fff;
+      color: $neutral-background-color;
     }
   }
 

@@ -1,24 +1,27 @@
 <template>
-  <div class="pagination">
+  <div
+    class="pagination"
+    v-if="pageNumbers.length !== 0 && pageNumbers.length !== 1"
+  >
     <a
       href="#"
       class="pagination__link text"
       v-for="pageNumber in pageNumbers"
       :key="pageNumber"
-      @click.prevent="setStart(pageNumber)"
+      @click.prevent="setStartingIndex(pageNumber)"
     >
       <RoundButton
         :variant="pageNumber === currentPage ? 'small' : 'pagination'"
-        :empty="true"
+        :is-empty="true"
       />
       <div class="pagination__text">
         {{ String(pageNumber + 1).padStart(2, "0") }}
       </div>
     </a>
     <a
-      v-if="pageNumbers.length !== 1 && currentPage !== pageNumbers.length - 1 && pageNumbers.length !== 0"
+      v-if="currentPage !== pageNumbers.length - 1"
       href="#"
-      @click.prevent="setStart(pageNumbers.length - 1)"
+      @click.prevent="setStartingIndex(pageNumbers.length - 1)"
     >
       <RoundButton
         :variant="
@@ -34,7 +37,12 @@ import RoundButton from "./RoundButton.vue";
 
 export default {
   name: "PaginationElement",
-  props: ["numberOfItems", "numberOfPagesShown", "currentPage", "setStart"],
+  props: [
+    "numberOfItems",
+    "numberOfItemsShown",
+    "currentPage",
+    "setStartingIndex",
+  ],
   components: {
     RoundButton,
   },
@@ -42,7 +50,7 @@ export default {
     pageNumbers() {
       return Array.from(
         {
-          length: Math.ceil(this.numberOfItems / this.numberOfPagesShown),
+          length: Math.ceil(this.numberOfItems / this.numberOfItemsShown),
         },
         (_, i) => i
       );

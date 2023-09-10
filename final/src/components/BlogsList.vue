@@ -1,9 +1,11 @@
 <template>
   <div class="blogs-list">
     <BlogItem
-      v-for="article in articles.slice(start, start + length)"
+      v-for="article in articles.slice(
+        startingIndex,
+        startingIndex + numberOfArticlesShown
+      )"
       :key="article.id"
-      :goto="goto"
       :dest="article.id"
       :article="article"
     />
@@ -15,7 +17,7 @@ import BlogItem from "./BlogItem.vue";
 
 export default {
   name: "BlogsList",
-  props: ["goto", "articles", "start", "length"],
+  props: ["articles", "startingIndex", "numberOfArticlesShown"],
   components: {
     BlogItem,
   },
@@ -25,6 +27,7 @@ export default {
 <style lang="scss" scoped>
 .blogs-list {
   display: grid;
+  justify-items: center;
   grid-template-columns: repeat(3, 1fr);
   gap: pxToVw(28);
 

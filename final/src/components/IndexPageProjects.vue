@@ -9,11 +9,11 @@
         </p>
       </header>
       <div class="project__items-wrapper">
-        <IndexPageProjectItem
-          :goto="goto"
+        <ProjectItem
           v-for="(project, index) in projects.slice(projects.length - 4)"
-          :project="project"
           :key="index"
+          :project="project"
+          :is-index-page="true"
         />
       </div>
     </div>
@@ -21,20 +21,18 @@
 </template>
 
 <script>
-import projects from "@/assets/projects";
-import IndexPageProjectItem from "./IndexPageProjectItem.vue";
+import ProjectItem from "./ProjectItem.vue";
 
 export default {
   name: "IndexPageProjects",
-  props: ["goto"],
   components: {
-    IndexPageProjectItem,
+    ProjectItem,
   },
-  data() {
-    return {
-      projects,
-    };
-  },
+  computed: {
+    projects() {
+      return this.$store.getters.getProjects;
+    }
+  }
 };
 </script>
 
@@ -46,6 +44,7 @@ export default {
 
   &__items-wrapper {
     display: grid;
+    align-items: end;
     grid-template-columns: repeat(2, 1fr);
     gap: pxToVw(56) pxToVw(100);
   }

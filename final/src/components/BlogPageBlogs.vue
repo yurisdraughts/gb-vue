@@ -3,16 +3,15 @@
     <div class="container">
       <h2 class="section__blog-page-heading heading">Articles & News</h2>
       <BlogsList
-        :goto="goto"
         :articles="filteredArticles"
-        :start="start"
-        :length="numberOfPagesShown"
+        :number-of-articles-shown="numberOfArticlesShown"
+        :starting-index="startingIndex"
       />
       <Pagination
-        :number-of-items="this.filteredArticles.length"
-        :number-of-pages-shown="numberOfPagesShown"
         :current-page="currentPage"
-        :set-start="setStart"
+        :number-of-items="filteredArticles.length"
+        :number-of-items-shown="numberOfArticlesShown"
+        :set-starting-index="setStartingIndex"
       />
     </div>
   </section>
@@ -24,32 +23,35 @@ import Pagination from "./Pagination.vue";
 
 export default {
   name: "BlogPageBlogs",
-  props: ["goto", "articles", "currentArticleId", "currentTag"],
+  props: ["tagId"],
   components: {
     BlogsList,
     Pagination,
   },
   data() {
     return {
-      start: 0,
+      startingIndex: 0,
       currentPage: 0,
-      numberOfPagesShown: 6,
+      numberOfArticlesShown: 6,
     };
   },
   computed: {
+    articles() {
+      return this.$store.getters.getArticles;
+    },
     filteredArticles() {
       const result = this.articles.filter((article) => {
-        return this.currentTag === null
+        return this.tagId === undefined
           ? true
-          : article.tags.includes(this.currentTag);
+          : article.tags.includes(this.tagId);
       });
       return result;
     },
   },
   methods: {
-    setStart(currentPage) {
+    setStartingIndex(currentPage) {
       this.currentPage = currentPage;
-      this.start = currentPage * this.numberOfPagesShown;
+      this.startingIndex = currentPage * this.numberOfArticlesShown;
     },
   },
 };

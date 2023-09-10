@@ -1,5 +1,8 @@
 <template>
-  <div class="round-button" :class="[`round-button_${variant}`, { hovered }]">
+  <div
+    class="round-button"
+    :class="[`round-button_${variant}`, { hover: isHovered }]"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       :width="svg.width"
@@ -16,7 +19,7 @@
         class="round-button__circle"
       />
       <path
-        v-if="!empty"
+        v-if="!isEmpty"
         :d="svg.path.d"
         stroke="#292F36"
         stroke-width="2"
@@ -33,8 +36,8 @@ export default {
   name: "RoundButton",
   props: {
     variant: String,
-    hovered: Boolean,
-    empty: Boolean,
+    isHovered: Boolean,
+    isEmpty: Boolean,
   },
   computed: {
     svg() {
@@ -49,7 +52,7 @@ export default {
         cx = cy = r = 35;
         d = "M32 44L40 35L32 26";
       } else {
-        throw new Error("Unknown variant of RoundButton compinent");
+        throw new Error("Unknown variant of RoundButton component");
       }
 
       return { width, height, circle: { cx, cy, r }, path: { d } };
@@ -79,11 +82,11 @@ export default {
 
   &_small &__circle {
     @include transition(fill);
-    fill: $light-bg-colot;
+    fill: $light-background-color;
   }
 
-  &_small.hovered &__circle {
-    fill: #fff;
+  &_small.hover &__circle {
+    fill: $neutral-background-color;
   }
 
   &_large {
@@ -101,7 +104,7 @@ export default {
     stroke: $heading-color;
   }
 
-  &_large.hovered &__path {
+  &_large.hover &__path {
     stroke: $accent-color;
   }
 

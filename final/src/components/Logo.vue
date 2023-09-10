@@ -1,5 +1,5 @@
 <template>
-  <a class="logo link" @click.prevent="goto({ page: 'index' })">
+  <router-link class="logo link" :to="{ name: 'index' }">
     <img
       src="@/assets/images/Logo.svg"
       alt="Interno Logo"
@@ -7,13 +7,12 @@
       height="34"
     />
     <div class="heading heading_logo">Interno</div>
-  </a>
+  </router-link>
 </template>
 
 <script>
 export default {
   name: "SiteLogo",
-  props: ["goto"],
 };
 </script>
 

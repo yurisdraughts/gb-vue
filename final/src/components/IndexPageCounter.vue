@@ -30,7 +30,7 @@ export default {
 <style lang="scss" scoped>
 .counter {
   padding-block: pxToVw(151);
-  background-color: $light-bg-colot;
+  background-color: $light-background-color;
 
   &__container {
     display: grid;
