@@ -1,13 +1,13 @@
 import Vue from "vue";
-import VueRouter from "vue-router";
+import Router from "vue-router";
 
 import IndexPage from "@/pages/IndexPage.vue";
 import BlogPage from "@/pages/BlogPage.vue";
 import ProjectPage from "@/pages/ProjectPage.vue";
 
-Vue.use(VueRouter);
+Vue.use(Router);
 
-export default new VueRouter({
+export default new Router({
   routes: [
     {
       path: "/",

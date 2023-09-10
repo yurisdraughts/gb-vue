@@ -8,18 +8,19 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    siteName: "Interior Design",
     articles,
     projects,
     projectCategories,
   },
   actions: {
-    toggleFavoriteProject({ commit, getters }, id) {
-      commit("_toggleFavoriteProject", { id, getters });
+    toggleFavoriteProject({ commit, getters: { getProjectById } }, id) {
+      commit("_toggleFavoriteProject", { id, getProjectById });
     },
   },
   mutations: {
-    _toggleFavoriteProject(_, { id, getters }) {
-      const project = getters.getById("projects", id);
+    _toggleFavoriteProject(_, { id, getProjectById }) {
+      const project = getProjectById(id);
       project.isFavorite = !project.isFavorite;
     },
   },
@@ -34,6 +35,9 @@ export default new Vuex.Store({
       }
 
       return result;
+    },
+    getSiteName(state) {
+      return state.siteName;
     },
     getArticles(state) {
       return state.articles;
