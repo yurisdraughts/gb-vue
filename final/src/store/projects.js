@@ -21,6 +21,7 @@ export default [
     img: { src: "Modern-Bedroom2.png", height: 562, width: 842 },
     id: 0,
     description,
+    isFavorite: true,
   },
   {
     heading: "System Table",
@@ -29,6 +30,7 @@ export default [
     img: { src: "System-Table.png", height: 807, width: 647 },
     id: 1,
     description,
+    isFavorite: false,
   },
   {
     heading: "System Table",
@@ -37,6 +39,7 @@ export default [
     img: { src: "System-Table.png", height: 807, width: 647 },
     id: 2,
     description,
+    isFavorite: false,
   },
   {
     heading: "Minimal Bedroom table",
@@ -45,6 +48,7 @@ export default [
     img: { src: "Modern-Bedroom.png", height: 927, width: 618 },
     id: 3,
     description,
+    isFavorite: false,
   },
   {
     heading: "Minimal Bedroom",
@@ -53,6 +57,7 @@ export default [
     img: { src: "Minimal-Bedroom2.png", height: 1047, width: 573 },
     id: 4,
     description,
+    isFavorite: false,
   },
   {
     heading: "Minimal Bedroom table",
@@ -61,6 +66,7 @@ export default [
     img: { src: "Modern-Medroom.png", height: 574, width: 860 },
     id: 5,
     description,
+    isFavorite: false,
   },
   {
     heading: "Minimal Bedroom table",
@@ -69,6 +75,7 @@ export default [
     img: { src: "Minimal-Bedroom-Table.png", height: 921, width: 614 },
     id: 6,
     description,
+    isFavorite: false,
   },
   {
     heading: "Classic Minimal Bedroom",
@@ -77,6 +84,7 @@ export default [
     img: { src: "Classic-Minimal-Bedroom.png", height: 924, width: 616 },
     id: 7,
     description,
+    isFavorite: false,
   },
   {
     heading: "Minimal Bedroom",
@@ -85,6 +93,7 @@ export default [
     img: { src: "Minimal-Bedroom1.png", height: 937, width: 624 },
     id: 8,
     description,
+    isFavorite: true,
   },
   {
     heading: "Minimal Bedroom table",
@@ -93,6 +102,7 @@ export default [
     img: { src: "Minimal-Bedroom-Table.png", height: 921, width: 614 },
     id: 9,
     description,
+    isFavorite: false,
   },
   {
     heading: "Classic Minimal Bedroom",
@@ -101,6 +111,7 @@ export default [
     img: { src: "Classic-Minimal-Bedroom.png", height: 924, width: 616 },
     id: 10,
     description,
+    isFavorite: false,
   },
   {
     heading: "Minimal Bedroom",
@@ -109,6 +120,7 @@ export default [
     img: { src: "Minimal-Bedroom1.png", height: 937, width: 624 },
     id: 11,
     description,
+    isFavorite: true,
   },
   {
     heading: "Modern Kitchan",
@@ -117,6 +129,7 @@ export default [
     img: { src: "Kitchan1.png", height: 525, width: 548 },
     id: 12,
     description,
+    isFavorite: false,
   },
   {
     heading: "Modern Kitchan",
@@ -125,6 +138,7 @@ export default [
     img: { src: "Kitchan2.png", height: 525, width: 548 },
     id: 13,
     description,
+    isFavorite: false,
   },
   {
     heading: "Modern Kitchan",
@@ -133,6 +147,7 @@ export default [
     img: { src: "Kitchan3.png", height: 525, width: 552 },
     id: 14,
     description,
+    isFavorite: false,
   },
   {
     heading: "Modern Kitchan",
@@ -141,5 +156,6 @@ export default [
     img: { src: "Kitchan4.png", height: 525, width: 550 },
     id: 15,
     description,
+    isFavorite: true,
   },
 ];

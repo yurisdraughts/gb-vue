@@ -4,7 +4,6 @@ import VueRouter from "vue-router";
 import IndexPage from "@/pages/IndexPage.vue";
 import BlogPage from "@/pages/BlogPage.vue";
 import ProjectPage from "@/pages/ProjectPage.vue";
-import ErrorPage from "@/pages/ErrorPage.vue";
 
 Vue.use(VueRouter);
 
@@ -50,7 +49,7 @@ export default new VueRouter({
     {
       path: "/:anythingElse(.*)*",
       name: "error",
-      component: ErrorPage,
+      component: () => import("@/pages/ErrorPage.vue"),
     },
   ],
 });

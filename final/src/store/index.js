@@ -12,7 +12,17 @@ export default new Vuex.Store({
     projects,
     projectCategories,
   },
-  mutations: {},
+  actions: {
+    toggleFavoriteProject({ commit, getters }, id) {
+      commit("_toggleFavoriteProject", { id, getters });
+    },
+  },
+  mutations: {
+    _toggleFavoriteProject(_, { id, getters }) {
+      const project = getters.getById("projects", id);
+      project.isFavorite = !project.isFavorite;
+    },
+  },
   getters: {
     getById: (state) => (property, id) => {
       let result;

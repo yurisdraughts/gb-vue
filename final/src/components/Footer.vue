@@ -8,7 +8,7 @@
           lookings.
         </p>
         <div class="footer__socials">
-          <a href="#" class="link">
+          <a href="#" target="_blank" class="link">
             <svg
               width="19"
               height="16"
@@ -23,7 +23,7 @@
               />
             </svg>
           </a>
-          <a href="#" class="link">
+          <a href="#" target="_blank" class="link">
             <svg
               width="17"
               height="16"

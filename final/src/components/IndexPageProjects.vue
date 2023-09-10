@@ -13,7 +13,7 @@
           v-for="(project, index) in projects.slice(projects.length - 4)"
           :key="index"
           :project="project"
-          :is-index-page="true"
+          variant="index"
         />
       </div>
     </div>

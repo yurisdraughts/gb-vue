@@ -19,6 +19,7 @@
           v-for="(project, index) in projectsOnPage"
           :project="project"
           :key="index"
+          variant="project"
         />
       </div>
       <div v-else class="text projects__no-projects">No projects</div>
