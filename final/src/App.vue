@@ -9,6 +9,7 @@ export default {
   name: "App",
   watch: {
     $route: {
+      immediate: true,
       handler(to) {
         const separator = " - ";
         const siteName = this.$store.getters.getSiteName;
