@@ -18,19 +18,19 @@
           Blog
         </router-link>
         <router-link
-          :to="{ name: 'project' }"
+          :to="{ name: 'projects' }"
           v-else-if="variant === 'project'"
           class="link text"
         >
           Project
         </router-link>
-        {{ tagId ? "/" : "" }}
+        {{ tagName ? "/" : "" }}
         <router-link
-          v-if="variant === 'blog' && tagId !== undefined"
-          :to="{ name: 'tag', params: { tagId } }"
+          v-if="variant === 'blog' && tagName !== undefined"
+          :to="{ name: 'tag', params: { tagName } }"
           class="link text"
         >
-          {{ tagId }}
+          {{ tagName }}
         </router-link>
       </div>
     </header>
@@ -40,7 +40,7 @@
 <script>
 export default {
   name: "PageBanner",
-  props: ["variant", "tagId", "articleId", "projectId"],
+  props: ["variant", "tagName", "articleId", "projectId"],
   computed: {
     heading() {
       if (this.variant === "blog") return "Articles & News";

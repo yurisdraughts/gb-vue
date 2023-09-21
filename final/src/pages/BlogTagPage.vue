@@ -1,7 +1,7 @@
 <template>
   <Layout>
-    <Banner variant="blog" :tag-id="tagId" />
-    <BlogPageBlogs :tag-id="tagId" />
+    <Banner variant="blog" :tag-name="tagName" />
+    <BlogPageBlogs :tag-name="tagName" />
   </Layout>
 </template>
 
@@ -12,7 +12,7 @@ import BlogPageBlogs from "@/components/BlogPageBlogs.vue";
 
 export default {
   name: "BlogTagPage",
-  props: ["tagId"],
+  props: ["tagName"],
   components: {
     Layout,
     Banner,

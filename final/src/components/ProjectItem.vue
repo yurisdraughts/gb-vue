@@ -20,7 +20,7 @@
           <div class="text">
             <template v-for="(tag, index) in project.tags">
               <router-link
-                :to="{ name: 'tag', params: { tagId: tag } }"
+                :to="{ name: 'tag', params: { tagName: tag } }"
                 class="link"
                 :key="index"
               >

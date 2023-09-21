@@ -24,7 +24,7 @@ export default new Router({
       component: BlogPage,
     },
     {
-      path: "/blog/tag/:tagId",
+      path: "/blog/tag/:tagName",
       name: "tag",
       component: () => import("@/pages/BlogTagPage.vue"),
       props: true,
@@ -47,9 +47,13 @@ export default new Router({
       props: true,
     },
     {
-      path: "/:anythingElse(.*)*",
+      path: "/404",
       name: "error",
       component: () => import("@/pages/ErrorPage.vue"),
+    },
+    {
+      path: "*",
+      redirect: { name: "error" },
     },
   ],
 });

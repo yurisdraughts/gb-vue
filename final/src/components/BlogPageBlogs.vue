@@ -23,7 +23,7 @@ import Pagination from "./Pagination.vue";
 
 export default {
   name: "BlogPageBlogs",
-  props: ["tagId"],
+  props: ["tagName"],
   components: {
     BlogsList,
     Pagination,
@@ -41,9 +41,9 @@ export default {
     },
     filteredArticles() {
       const result = this.articles.filter((article) => {
-        return this.tagId === undefined
+        return this.tagName === undefined
           ? true
-          : article.tags.includes(this.tagId);
+          : article.tags.includes(this.tagName);
       });
       return result;
     },

@@ -56,7 +56,7 @@
         <div class="heading current__tags-heading">Tags</div>
         <div class="current__tags-wrapper">
           <router-link
-            :to="{ name: 'tag', params: { tagId: tag } }"
+            :to="{ name: 'tag', params: { tagName: tag } }"
             class="current__tag link text"
             v-for="(tag, index) in currentArticle.tags"
             :key="index"

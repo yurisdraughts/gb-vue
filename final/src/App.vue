@@ -41,7 +41,7 @@ export default {
             break;
 
           case "tag":
-            document.title = siteName + separator + `Tag: "${params.tagId}"`;
+            document.title = siteName + separator + `Tag: "${params.tagName}"`;
             break;
 
           default:
